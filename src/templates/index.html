@@ -8,7 +8,7 @@
 <body>
     <div class="header">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/2048px-F1.svg.png" alt="F1 Logo">
-        <h1>Bienvenido a nuestra tienda</h1>
+        <h1>Welcome to our store</h1>
     </div>
 
     <div class="login-container">
@@ -26,15 +26,13 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
-        <div class ="continue">
-            <button type="submit">Sing in</button>
-        </div>
-<div class = "register">
-    <button type="submit">Register</button>
-</div>
-        
+
+            <!-- Aquí los botones tienen las clases directamente -->
+            <button class="register" type="submit">Register</button>
+
+            <button class="continue" type="button">Sing in</button>
         </form>
-        
+
         {% if error %}
             <ul class="flashes">
                 <li>{{ error }}</li>
