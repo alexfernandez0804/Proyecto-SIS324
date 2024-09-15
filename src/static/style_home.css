@@ -1,0 +1,164 @@
+body {
+  margin: auto ;
+  padding: 0;
+  width: 70%;
+}
+  
+.top_container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: black; 
+  box-sizing: border-box; 
+}
+
+.top_container img {
+  max-width: 100px; 
+  height: auto;
+}
+
+.search {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center; /* Alinea el input y el botón verticalmente */
+}
+
+.search input {
+  padding: 14px;
+  border-radius: 5px 0 0 5px; /* Bordes redondeados solo en la izquierda */
+  border: 1px solid #ccc;
+  border-right: none; /* Elimina el borde derecho del input */
+  width: 75%;
+  background-color: white; 
+  color: black;
+}
+
+.search input::placeholder {
+  color: #bbb;
+}
+
+.search button {
+  background-color: #fff; /* Mismo color de fondo que el input */
+  border: 1px solid #ccc; /* Mismo borde que el input */
+  border-radius: 0 5px 5px 0; /* Bordes redondeados solo en la derecha */
+  border-left: none; /* Elimina el borde izquierdo del botón */
+  cursor: pointer;
+  padding: 10px;
+}
+
+.search button img {
+  max-width: 20px;
+  height: auto;
+}
+
+
+.logo img {
+  max-width: 100px; 
+  height: auto;
+}
+
+.menu_categori {
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
+  width: 100%;
+}
+
+.menu_categori select {
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+  border: none;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 0;
+  appearance: none;
+  transition: background-color 0.3s ease;
+  font-size: 10px;
+}
+
+.menu_categori select:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.menu_categori select:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+
+.menu_categori select:hover {
+  background-color: #e0e0e0; 
+}
+
+
+
+
+
+
+.title_1 {
+  background-color:  red;
+  color: white;
+  text-align: center;
+  padding: 20px;  
+}
+.title_2 {
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
+.title_3 {
+  background-color: white;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 50px;
+  text-align:left;
+}
+
+/*parte de los logos centrales*/
+
+ .logos_central {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+  height: 100vh; 
+}
+
+.logos_central img {
+  max-width: 50px;
+  height: 100px;
+}
+
+
+
+/*parte de lo logos inferiores*/
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px; 
+  padding: 20px; 
+  position: relative;
+  top: -800px; 
+
+}
+
+.logo_buy img,
+.logo_1 img,
+.logo_2 img,
+.logo_3 img,
+.log_4 img,
+.logo_5 img,
+.logo_6 img {
+  display: flex;
+  max-width: 100%;
+  height: auto;
+}

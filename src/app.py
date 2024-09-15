@@ -1,5 +1,5 @@
 from flask import Flask
-from extensions import db, ma  # Importar desde extensions
+from extensions import db, ma  
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite?timeout=10'
@@ -12,5 +12,5 @@ from routes import *
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # Esto crea las tablas en la base de datos
+        db.create_all()  
     app.run(debug=True)
