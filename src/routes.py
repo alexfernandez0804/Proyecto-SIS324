@@ -35,6 +35,10 @@ categories_schema = CategorySchema(many=True)
 def home():
     return render_template('home.html')  # Renderizar home.html
 
+@app.route('/continue')
+def continue_page():
+    return render_template('continue.html')
+
 # Ruta para verificar si existe un usuario y redirigir a home.html si es correcto
 @app.route('/users_contiene', methods=['POST'])
 def contains_user():
