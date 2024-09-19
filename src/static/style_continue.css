@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #000000; /* Fondo negro */
+    background-color: #000000; 
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -28,11 +28,11 @@ h2 {
 }
 
 .container {
-    background: #f4f4f9;
-    padding: 0; /* Removemos el padding */
-    border-radius: 8px; /* Mantén el borde redondeado si deseas */
+    background-color: white;
+    padding: 0; 
+    border-radius: 8px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 320px; /* Ajustamos el ancho del contenedor */
+    width: 320px; 
     text-align: center;
     margin-top: 100px;
 }
@@ -41,7 +41,7 @@ h2 {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9; /* Fondo gris claro */
+    background-color: white; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,12 +50,12 @@ body {
 }
 
 form {
-    background: #ffffff; /* Fondo blanco */
+    background: white; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Usamos todo el ancho del contenedor */
-    border: 2px solid #d71920; /* Borde rojo */
+    width: 100%; 
+    border: 2px solid #d71920; 
     text-align: center;
 }
 
@@ -82,7 +82,7 @@ form {
 button.continue {
     width: 100%;
     padding: 10px;
-    background-color: #d71920; /* Rojo */
+    background-color: #d71920; 
     color: white;
     border: none;
     border-radius: 4px;
@@ -91,5 +91,5 @@ button.continue {
 }
 
 button.continue:hover {
-    background-color: #b0151b; /* Rojo más oscuro */
+    background-color: #b0151b;
 }
