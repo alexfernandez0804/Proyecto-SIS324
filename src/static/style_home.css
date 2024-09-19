@@ -1,9 +1,17 @@
-body {
-  margin: auto ;
-  padding: 0;
-  width: 70%;
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-  
+
+body {
+  margin: auto;
+  padding: 0;
+  max-width: 100%;
+  width: 70%; 
+  box-sizing: border-box; 
+}
+
+/* Contenedor superior */
 .top_container {
   display: flex;
   justify-content: space-between; 
@@ -11,7 +19,6 @@ body {
   width: 100%;
   padding: 20px;
   background-color: black; 
-  box-sizing: border-box; 
 }
 
 .top_container img {
@@ -19,32 +26,30 @@ body {
   height: auto;
 }
 
+
 .search {
   display: flex;
-  flex: 1;
+  flex: 1; 
   justify-content: center;
-  align-items: center; /* Alinea el input y el botón verticalmente */
+  align-items: center;
+  max-width: 100%; 
 }
 
 .search input {
   padding: 14px;
-  border-radius: 5px 0 0 5px; /* Bordes redondeados solo en la izquierda */
+  border-radius: 5px 0 0 5px; 
   border: 1px solid #ccc;
-  border-right: none; /* Elimina el borde derecho del input */
-  width: 75%;
+  border-right: none;
+  width: 75%; 
   background-color: white; 
   color: black;
 }
 
-.search input::placeholder {
-  color: #bbb;
-}
-
 .search button {
-  background-color: #fff; /* Mismo color de fondo que el input */
-  border: 1px solid #ccc; /* Mismo borde que el input */
-  border-radius: 0 5px 5px 0; /* Bordes redondeados solo en la derecha */
-  border-left: none; /* Elimina el borde izquierdo del botón */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 5px 0;
+  border-left: none; 
   cursor: pointer;
   padding: 10px;
 }
@@ -55,22 +60,19 @@ body {
 }
 
 
-.logo img {
-  max-width: 100px; 
-  height: auto;
-}
-
 .menu_categori {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%; 
   gap: 0;
-  width: 100%;
+  margin-bottom: 20px; 
 }
 
 .menu_categori select {
-  text-align: center;
   flex: 1;
   min-width: 100px;
+  max-width: calc(100% / 3); 
   border: none;
   background-color: #f9f9f9;
   padding: 10px;
@@ -80,53 +82,37 @@ body {
   font-size: 10px;
 }
 
-.menu_categori select:first-child {
-  border-radius: 5px 0 0 5px;
+/* Títulos */
+.title_1, .title_2, .title_3 {
+  width: 100%; 
+  padding: 20px;  
+  text-align: center;
 }
-
-.menu_categori select:last-child {
-  border-radius: 0 5px 5px 0;
-}
-
-
-.menu_categori select:hover {
-  background-color: #e0e0e0; 
-}
-
-
-
-
-
 
 .title_1 {
-  background-color:  red;
+  background-color: red;
   color: white;
-  text-align: center;
-  padding: 20px;  
 }
+
 .title_2 {
   background-color: white;
-  text-align: center;
-  padding: 20px;
   font-weight: bold;
 }
+
 .title_3 {
   background-color: white;
-  padding: 20px;
   font-weight: bold;
-  font-size: 50px;
-  text-align:left;
+  font-size: 2rem;
+  text-align: left;
 }
 
-/*parte de los logos centrales*/
 
- .logos_central {
+.logos_central {
   display: flex;
   justify-content: center;
   align-items: flex-start; 
   flex-wrap: wrap; 
   gap: 10px; 
-  height: 100vh; 
 }
 
 .logos_central img {
@@ -134,9 +120,6 @@ body {
   height: 100px;
 }
 
-
-
-/*parte de lo logos inferiores*/
 
 .container {
   display: flex;
@@ -146,9 +129,6 @@ body {
   text-align: center;
   gap: 20px; 
   padding: 20px; 
-  position: relative;
-  top: -800px; 
-
 }
 
 .logo_buy img,
@@ -161,4 +141,27 @@ body {
   display: flex;
   max-width: 100%;
   height: auto;
+}
+
+
+@media (max-width: 768px) {
+  body {
+    width: 100%;
+  }
+
+  .top_container {
+    flex-direction: column; 
+  }
+
+  .menu_categori select {
+    font-size: 12px; 
+  }
+
+  .title_3 {
+    font-size: 1.5rem; 
+  }
+
+  .search input, .search button {
+    width: 100%; 
+  }
 }

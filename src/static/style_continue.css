@@ -29,13 +29,12 @@ h2 {
 
 .container {
     background: #f4f4f9;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 0; /* Removemos el padding */
+    border-radius: 8px; /* Mantén el borde redondeado si deseas */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 320px; /* Ajustamos el ancho del contenedor */
     text-align: center;
-    margin-top: 100px; /* Para evitar que la cabecera se solape con el contenido */
-    border: 2px solid #d71920; /* Borde rojo */
+    margin-top: 100px;
 }
 
 
@@ -55,9 +54,11 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 100%; /* Usamos todo el ancho del contenedor */
+    border: 2px solid #d71920; /* Borde rojo */
     text-align: center;
 }
+
 
 .input-group {
     margin-bottom: 15px;
