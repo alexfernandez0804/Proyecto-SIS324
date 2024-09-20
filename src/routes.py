@@ -39,6 +39,42 @@ def home():
 def continue_page():
     return render_template('continue.html')
 
+@app.route('/categori_1')
+def categori_1():
+    return render_template('categori_1.html')
+
+@app.route('/categori_2')
+def categori_2():
+    return render_template('categori_2.html')
+
+@app.route('/categori_3')
+def categori_3():
+    return render_template('categori_3.html')
+
+@app.route('/categori_4')
+def categori_4():
+    return render_template('categori_4.html')
+
+@app.route('/categori_5')
+def categori_5():
+    return render_template('categori_5.html')
+
+@app.route('/categori_6')
+def categori_6():
+    return render_template('categori_6.html')
+
+@app.route('/categori_7')
+def categori_7():
+    return render_template('categori_7.html')
+
+@app.route('/categori_8')
+def categori_8():
+    return render_template('categori_8.html')
+
+@app.route('/categori_9')
+def categori_9():
+    return render_template('categori_9.html')
+
 # Ruta para verificar si existe un usuario y redirigir a home.html si es correcto
 @app.route('/users_contiene', methods=['POST'])
 def contains_user():
