@@ -89,5 +89,3 @@ def contains_user():
         return redirect(url_for('home'))  
     else:
         return redirect(url_for('index', error='Usuario no encontrado o credenciales incorrectas'))
-
- 
