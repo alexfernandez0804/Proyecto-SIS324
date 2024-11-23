@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .flash-messages {
+            margin: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .alert.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .alert.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/2048px-F1.svg.png" alt="F1 Logo">
+        <h1>Bienvenido a nuestra tienda</h1>
+    </div>
+
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form method="POST" action="{{ url_for('routes.login') }}">
+            <div class="input-group">
+                <label for="usuario">Usuario:</label>
+                <input type="text" name="usuario" placeholder="Usuario" required>
+            </div>
+            <div class="input-group">
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" name="contraseña" placeholder="Contraseña" required>
+            </div>
+            <button class="continue" type="submit">Entrar</button>
+        </form>        
+        <p>¿No tienes una cuenta? <a href="/register">Regístrate aquí</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Administración</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        .header {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header img {
+            height: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+        }
+
+        .dashboard-container {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .dashboard-container button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dashboard-container button:hover {
+            background-color: darkred;
+        }
+
+        .action-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            margin: 20px;
+        }
+
+        .form-container input {
+            margin: 5px 0;
+            padding: 10px;
+            width: 300px;
+            display: block;
+        }
+
+        .form-container button {
+            margin-top: 10px;
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .table-container {
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        table button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/2048px-F1.svg.png" alt="F1 Logo">
+        <h3>Bienvenido a nuestra tienda</h3>
+    </div>
+
+    <h1>Panel de Administración</h1>
+    <div class="dashboard-container">
+        <button onclick="showSection('usuarios')">Usuarios</button>
+        <button onclick="showSection('productos')">Productos</button>
+        <button onclick="showSection('categorias')">Categorías</button>
+    </div>
+
+    <!-- Gestión de Usuarios -->
+    <div id="usuarios" class="action-section">
+        <h2>Gestión de Usuarios</h2>
+        <button onclick="showUserForm()">Añadir Usuario</button>
+        <div id="user-form" class="form-container" style="display:none;">
+            <h3>Añadir / Editar Usuario</h3>
+            <input type="hidden" id="user-id">
+            <input type="text" id="user-nombre" placeholder="Nombre">
+            <input type="text" id="user-apellido" placeholder="Apellido">
+            <input type="text" id="user-usuario" placeholder="Usuario">
+            <input type="password" id="user-contraseña" placeholder="Contraseña">
+            <input type="email" id="user-correo" placeholder="Correo">
+            <button onclick="saveUser()">Guardar</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Usuario</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="user-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Gestión de Productos -->
+    <div id="productos" class="action-section">
+        <h2>Gestión de Productos</h2>
+        <button onclick="showProductForm()">Añadir Producto</button>
+        <div id="product-form" class="form-container" style="display:none;">
+            <h3>Añadir / Editar Producto</h3>
+            <input type="hidden" id="product-id">
+            <input type="text" id="product-nombre" placeholder="Nombre">
+            <input type="text" id="product-descripcion" placeholder="Descripción">
+            <input type="number" id="product-precio" placeholder="Precio">
+            <input type="number" id="product-stock" placeholder="Stock">
+            <input type="text" id="product-categoria" placeholder="Categoría ID">
+            <button onclick="saveProduct()">Guardar</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="product-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Gestión de Categorías -->
+    <div id="categorias" class="action-section">
+        <h2>Gestión de Categorías</h2>
+        <button onclick="showCategoryForm()">Añadir Categoría</button>
+        <div id="category-form" class="form-container" style="display:none;">
+            <h3>Añadir / Editar Categoría</h3>
+            <input type="hidden" id="category-id">
+            <input type="text" id="category-nombre" placeholder="Nombre">
+            <input type="text" id="category-descripcion" placeholder="Descripción">
+            <button onclick="saveCategory()">Guardar</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="category-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.action-section').forEach(sec => sec.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+            if (section === 'usuarios') loadUsers();
+            if (section === 'productos') loadProducts();
+            if (section === 'categorias') loadCategories();
+        }
+
+        async function loadUsers() {
+            const response = await fetch('/api/users');
+            const users = await response.json();
+            const userTable = document.getElementById('user-tbody');
+            userTable.innerHTML = '';
+            users.forEach(user => {
+                userTable.innerHTML += `
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.nombre}</td>
+                        <td>${user.apellido}</td>
+                        <td>${user.usuario}</td>
+                        <td>${user.correo}</td>
+                        <td>
+                            <button onclick="editUser(${user.id})">Editar</button>
+                            <button onclick="deleteUser(${user.id})">Eliminar</button>
+                        </td>
+                    </tr>`;
+            });
+        }
+
+        async function loadProducts() {
+            const response = await fetch('/api/products');
+            const products = await response.json();
+            const productTable = document.getElementById('product-tbody');
+            productTable.innerHTML = '';
+            products.forEach(product => {
+                productTable.innerHTML += `
+                    <tr>
+                        <td>${product.id}</td>
+                        <td>${product.nombre}</td>
+                        <td>${product.descripcion}</td>
+                        <td>${product.precio}</td>
+                        <td>${product.stock}</td>
+                        <td>${product.categoria_id}</td>
+                        <td>
+                            <button onclick="editProduct(${product.id})">Editar</button>
+                            <button onclick="deleteProduct(${product.id})">Eliminar</button>
+                        </td>
+                    </tr>`;
+            });
+        }
+
+        async function loadCategories() {
+            const response = await fetch('/api/categories');
+            const categories = await response.json();
+            const categoryTable = document.getElementById('category-tbody');
+            categoryTable.innerHTML = '';
+            categories.forEach(category => {
+                categoryTable.innerHTML += `
+                    <tr>
+                        <td>${category.id}</td>
+                        <td>${category.nombre}</td>
+                        <td>${category.descripcion}</td>
+                        <td>
+                            <button onclick="editCategory(${category.id})">Editar</
+                            </button>
+                            <button onclick="deleteCategory(${category.id})">Eliminar</button>
+                        </td>
+                    </tr>`;
+            });
+        }
+
+        function showUserForm() {
+            document.getElementById('user-form').style.display = 'block';
+        }
+
+        function showProductForm() {
+            document.getElementById('product-form').style.display = 'block';
+        }
+
+        function showCategoryForm() {
+            document.getElementById('category-form').style.display = 'block';
+        }
+
+        async function saveUser() {
+            const id = document.getElementById('user-id').value;
+            const nombre = document.getElementById('user-nombre').value;
+            const apellido = document.getElementById('user-apellido').value;
+            const usuario = document.getElementById('user-usuario').value;
+            const contraseña = document.getElementById('user-contraseña').value;
+            const correo = document.getElementById('user-correo').value;
+
+            const method = id ? 'PUT' : 'POST';
+            const endpoint = id ? `/api/users/${id}` : '/api/users';
+            const response = await fetch(endpoint, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, apellido, usuario, contraseña, correo }),
+            });
+
+            if (response.ok) {
+                alert('Usuario guardado correctamente');
+                loadUsers();
+                document.getElementById('user-form').reset();
+                document.getElementById('user-form').style.display = 'none';
+            } else {
+                alert('Error al guardar usuario');
+            }
+        }
+
+        async function saveProduct() {
+            const id = document.getElementById('product-id').value;
+            const nombre = document.getElementById('product-nombre').value;
+            const descripcion = document.getElementById('product-descripcion').value;
+            const precio = document.getElementById('product-precio').value;
+            const stock = document.getElementById('product-stock').value;
+            const categoria_id = document.getElementById('product-categoria').value;
+
+            const method = id ? 'PUT' : 'POST';
+            const endpoint = id ? `/api/products/${id}` : '/api/products';
+            const response = await fetch(endpoint, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, descripcion, precio, stock, categoria_id }),
+            });
+
+            if (response.ok) {
+                alert('Producto guardado correctamente');
+                loadProducts();
+                document.getElementById('product-form').reset();
+                document.getElementById('product-form').style.display = 'none';
+            } else {
+                alert('Error al guardar producto');
+            }
+        }
+
+        async function saveCategory() {
+            const id = document.getElementById('category-id').value;
+            const nombre = document.getElementById('category-nombre').value;
+            const descripcion = document.getElementById('category-descripcion').value;
+
+            const method = id ? 'PUT' : 'POST';
+            const endpoint = id ? `/api/categories/${id}` : '/api/categories';
+            const response = await fetch(endpoint, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, descripcion }),
+            });
+
+            if (response.ok) {
+                alert('Categoría guardada correctamente');
+                loadCategories();
+                document.getElementById('category-form').reset();
+                document.getElementById('category-form').style.display = 'none';
+            } else {
+                alert('Error al guardar categoría');
+            }
+        }
+
+        async function deleteUser(id) {
+            const response = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                alert('Usuario eliminado correctamente');
+                loadUsers();
+            } else {
+                alert('Error al eliminar usuario');
+            }
+        }
+
+        async function deleteProduct(id) {
+            const response = await fetch(`/api/products/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                alert('Producto eliminado correctamente');
+                loadProducts();
+            } else {
+                alert('Error al eliminar producto');
+            }
+        }
+
+        async function deleteCategory(id) {
+            const response = await fetch(`/api/categories/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                alert('Categoría eliminada correctamente');
+                loadCategories();
+            } else {
+                alert('Error al eliminar categoría');
+            }
+        }
+
+        function editUser(id) {
+            const row = document.querySelector(`#user-tbody tr[data-id="${id}"]`);
+            document.getElementById('user-id').value = id;
+            document.getElementById('user-nombre').value = row.children[1].textContent;
+            document.getElementById('user-apellido').value = row.children[2].textContent;
+            document.getElementById('user-usuario').value = row.children[3].textContent;
+            document.getElementById('user-correo').value = row.children[4].textContent;
+            document.getElementById('user-form').style.display = 'block';
+        }
+
+        function editProduct(id) {
+            const row = document.querySelector(`#product-tbody tr[data-id="${id}"]`);
+            document.getElementById('product-id').value = id;
+            document.getElementById('product-nombre').value = row.children[1].textContent;
+            document.getElementById('product-descripcion').value = row.children[2].textContent;
+            document.getElementById('product-precio').value = row.children[3].textContent;
+            document.getElementById('product-stock').value = row.children[4].textContent;
+            document.getElementById('product-categoria').value = row.children[5].textContent;
+            document.getElementById('product-form').style.display = 'block';
+        }
+
+        function editCategory(id) {
+            const row = document.querySelector(`#category-tbody tr[data-id="${id}"]`);
+            document.getElementById('category-id').value = id;
+            document.getElementById('category-nombre').value = row.children[1].textContent;
+            document.getElementById('category-descripcion').value = row.children[2].textContent;
+            document.getElementById('category-form').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

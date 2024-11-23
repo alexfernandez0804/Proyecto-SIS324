@@ -1,12 +1,24 @@
+/* General reset */
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
+    margin: auto;
+    padding: 0;
+    max-width: 100%;
+    width: 90%;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
     background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #d71920; /* Rojo F1 */
+    padding: 20px;
+    margin: 0;
 }
 
 .header {
@@ -14,99 +26,100 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #000000; 
+    background-color: #000000;
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     color: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header img {
     height: 40px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .header h1 {
-    font-size: 24px;
+    font-size: 20px;
     margin: 0;
 }
 
-.login-container {
-    background-color: white;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
     padding: 20px;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    margin-top: 100px; 
-    border: 2px solid #d71920; 
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-input {
+    margin-top: 100px;
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
 }
-.register{
-    width: 95%;
-    padding: 10px;
-    background-color: #d71920; 
-    color: white;
+
+.menu_categori {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.menu_categori button {
+    flex: 1;
+    min-width: 100px;
+    max-width: calc(100% / 3);
     border: none;
-    border-radius: 4px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    font-weight: bold;
+    color: #000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu_categori button:hover {
+    background-color: #d71920; /* Rojo F1 */
+    color: white;
+    cursor: pointer;
+}
+
+input, select, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+button.continue {
+    background-color: #d71920;
+    color: white;
     cursor: pointer;
     font-size: 16px;
-    margin-bottom: 10px;
-
-}
-.continue{
     width: 95%;
-    padding: 10px;
-    background-color: #d71920; 
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  
 }
 
-.continue:hover {
-    background-color: #b0151b; 
-}
-.register:hover {
-    background-color: #b0151b; 
+button.continue:hover {
+    background-color: #b0151b;
 }
 
-
-.flashes {
-    list-style: none;
-    padding: 0;
+.logos_central img {
+    max-width: 80px;
+    margin: 5px;
+    transition: transform 0.3s ease;
 }
 
-.flashes li {
-    margin-top: 10px;
-    color: red;
+.logos_central img:hover {
+    transform: scale(1.1);
+}
+
+/* Sección de promociones */
+.title_1, .title_2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #000000;
+    text-align: center;
 }
